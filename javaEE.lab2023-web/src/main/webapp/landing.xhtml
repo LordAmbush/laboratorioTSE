@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+    </f:facet>
+    <title>PrimeFaces Siberia</title>
+    <script type="text/javascript">
+        hideMenu = function () {
+            $('.landing-menu').removeClass('fadeInDown').addClass('fadeOutUp');
+
+            setTimeout(function () {
+                $('.landing-wrapper').removeClass('landing-menu-active');
+                $('.landing-menu').removeClass('fadeOutUp');
+                $(document.body).removeClass('landing-body-block-scroll');
+            }, 150);
+        }
+
+        showMenu = function () {
+            $('.landing-wrapper').addClass('landing-menu-active');
+            $('.landing-menu').addClass('fadeInDown');
+            $(document.body).addClass('landing-body-block-scroll');
+        }
+
+        $(function () {
+            $('#landing-menu-button').on('click', function (e) {
+                var wrapper = $('.landing-wrapper');
+
+                if (wrapper.hasClass('landing-menu-active'))
+                    hideMenu();
+                else
+                    showMenu();
+
+                e.preventDefault();
+            });
+
+            $('.landing-menu').find('a').on('click', function (e) {
+                hideMenu();
+            });
+        });
+    </script>
+</h:head>
+
+<h:body styleClass="landing-body">
+    <div class="landing-wrapper">
+        <div class="landing-topbar">
+            <a href="#home">
+                <p:graphicImage name="images/landing/logo-siberia-landing.png" styleClass="logo" library="siberia-layout"/>
+            </a>
+
+            <ul class="landing-menu">
+                <li>
+                    <a href="#home">HOME</a>
+                </li>
+                <li>
+                    <a href="#features">FEATURES</a>
+                </li>
+                <li>
+                    <a href="#news">NEWS</a>
+                </li>
+                <li>
+                    <a href="#pricing">PRICING</a>
+                </li>
+                <li>
+                    <a href="#contact">CONTACT</a>
+                </li>
+            </ul>
+            <a href="" id="landing-menu-button">
+                <i class="pi pi-bars"/>
+            </a>
+        </div>
+        <div id="home" class="landing-banner">
+            <div class="landing-banner-content">
+                <h5>PrimeFaces Presents Siberia</h5>
+                <span>Modern and elegant responsive application template with a premium look for PrimeFaces
+                    components.</span>
+                <p:commandButton type="button" value="Learn More"/>
+            </div>
+            <div class="landing-banner-image">
+                <p:graphicImage name="images/landing/asset-hero.png" styleClass="desktop-hero"
+                                library="siberia-layout"/>
+                <p:graphicImage name="images/landing/asset-hero-mobile.png" styleClass="mobile-hero"
+                                library="siberia-layout"/>
+            </div>
+        </div>
+        <div id="features">
+            <div class="features-desc">
+                <span class="tag">FEATURES</span>
+                <h4>Your quest to find the UI library for JavaServer Faces is complete</h4>
+                <span>PrimeFaces is a collection of rich UI components for JavaServer Faces. All widgets are open source
+                    and free to use under Apache License. PrimeFaces is developed by PrimeTek Informatics, a vendor with
+                    years of expertise in developing open source UI solutions. </span>
+            </div>
+            <div class="features-items">
+                <div class="features-item">
+                    <p:graphicImage name="images/landing/icon-responsivelayout.png" library="siberia-layout"/>
+                    <h3>Responsive Layout</h3>
+                    <span>Parturient montes nascetur ridiculus mus. Feugiat in fermentum posuere urna nec tincidunt
+                        praesent semper.</span>
+                </div>
+                <div class="features-item">
+                    <p:graphicImage name="images/landing/icon-moderndesign.png" library="siberia-layout"/>
+                    <h3>Modern Design</h3>
+                    <span>Parturient montes nascetur ridiculus mus. Feugiat in fermentum posuere urna nec tincidunt
+                        praesent semper.</span>
+                </div>
+                <div class="features-item">
+                    <p:graphicImage name="images/landing/icon-welldocumented.png" library="siberia-layout"/>
+                    <h3>Well Documented</h3>
+                    <span>Parturient montes nascetur ridiculus mus. Feugiat in fermentum posuere urna nec tincidunt
+                        praesent semper.</span>
+                </div>
+                <div class="features-item">
+                    <p:graphicImage name="images/landing/icon-cleancode.png" library="siberia-layout"/>
+                    <h3>Clean Code</h3>
+                    <span>Parturient montes nascetur ridiculus mus. Feugiat in fermentum posuere urna nec tincidunt
+                        praesent semper.</span>
+                </div>
+            </div>
+        </div>
+        <div id="promo">
+            <h4>Join Siberia Community Now!</h4>
+            <span>Take advantage of media's most prominent business trend which empowers your internal advertising
+                teams.</span>
+            <p:commandButton type="button" icon="pi pi-plus" value="Join Now"/>
+        </div>
+        <div id="news">
+            <div class="news-header">
+                <div class="news-header-left">
+                    <span class="tag">NEWSFEED</span>
+                    <h4>Latest Blog Posts</h4>
+                </div>
+                <div class="news-header-right">
+                    <span>NEWEST</span>
+                    <span>ALL</span>
+                </div>
+            </div>
+            <div class="news-content">
+                <div class="post-card">
+                    <p:graphicImage name="images/landing/asset-post-1.jpg" library="siberia-layout"/>
+                    <h3>Scientists endorse mass civil disobedience to force climate action</h3>
+                    <span>11 Nov, 2019</span>
+                </div>
+                <div class="post-card">
+                    <p:graphicImage name="images/landing/asset-post-2.jpg" library="siberia-layout"/>
+                    <h3>Switzerland guarentees music education under its constitution.</h3>
+                    <span>11 Nov, 2019</span>
+                </div>
+                <div class="post-card">
+                    <p:graphicImage name="images/landing/asset-post-3.jpg" library="siberia-layout"/>
+                    <h3>Iceberg twice the size of New York City is about to break off of Antarctica</h3>
+                    <span>11 Nov, 2019</span>
+                </div>
+            </div>
+        </div>
+        <div id="pricing">
+            <div class="pricing-header">
+                <span class="tag">PRICING</span>
+                <h4>Are you ready for Siberia?</h4>
+            </div>
+            <div class="pricing-content">
+                <div class="pricing-card free">
+                    <div class="pricing-card-header">
+                        <div class="card-header-left">
+                            <h3>Free Plan</h3>
+                            <span>Forever free for early adopters</span>
+                        </div>
+                        <div class="card-header-right">
+                            <span>$</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-card-list">
+                        <li><i class="pi pi-check-circle"/> Responsive</li>
+                        <li><i class="pi pi-check-circle"/> Push Messages</li>
+                        <li><i class="pi pi-times-circle not-include"/> 10 Support Tickets</li>
+                        <li><i class="pi pi-times-circle not-include"/> Free Shipping</li>
+                        <li><i class="pi pi-times-circle not-include"/> Unlimited Space</li>
+                    </ul>
+                    <p:commandButton type="button" value="Try Free"/>
+                </div>
+                <div class="pricing-card basic">
+                    <div class="pricing-card-header">
+                        <div class="card-header-left">
+                            <h3>Basic Plan</h3>
+                            <span>Forever free for early adopters</span>
+                        </div>
+                        <div class="card-header-right">
+                            <span>$</span>
+                            <span>29</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-card-list">
+                        <li><i class="pi pi-check-circle"/> Responsive</li>
+                        <li><i class="pi pi-check-circle"/> Push Messages</li>
+                        <li><i class="pi pi-check-circle"/> 10 Support Tickets</li>
+                        <li><i class="pi pi-times-circle not-include"/> Free Shipping</li>
+                        <li><i class="pi pi-times-circle not-include"/> Unlimited Space</li>
+                    </ul>
+                    <p:commandButton type="button" value="Buy Now"/>
+                </div>
+                <div class="pricing-card pro">
+                    <div class="pricing-card-header">
+                        <div class="card-header-left">
+                            <h3>Professional Plan</h3>
+                            <span>Complete deal for enterprises</span>
+                        </div>
+                        <div class="card-header-right">
+                            <span>$</span>
+                            <span>249</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-card-list">
+                        <li><i class="pi pi-check-circle"/> Responsive</li>
+                        <li><i class="pi pi-check-circle"/> Push Messages</li>
+                        <li><i class="pi pi-check-circle"/> 10 Support Tickets</li>
+                        <li><i class="pi pi-check-circle"/> Free Shipping</li>
+                        <li><i class="pi pi-check-circle"/> Unlimited Space</li>
+                    </ul>
+                    <p:commandButton type="button" value="Buy Now"/>
+                </div>
+            </div>
+        </div>
+        <div id="contact">
+            <div class="contact-header">
+                <span class="tag">GET IN TOUCH</span>
+                <h4>Just drop us an email</h4>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h:form>
+                        <div class="name-email">
+                            <div class="form-group">
+                                <p:outputLabel for="name" value="Your Name"/>
+                                <p:inputText id="name"/>
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel for="email" value="Email Address"/>
+                                <p:inputText id="email"/>
+                            </div>
+                        </div>
+                        <p:outputLabel for="message" value="Message"/>
+                        <p:inputTextarea id="message" rows="3" autoResize="false"/>
+                    </h:form>
+                </div>
+                <div class="contact-address">
+                    <span>Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on
+                        business days. </span>
+                    <span>P: +90 111 1231313</span>
+                    <span>E: <a href="#">contact@dummyurl.com</a></span>
+                    <span>We are open from 9am — 5pm week days.</span>
+                </div>
+            </div>
+            <p:commandButton type="button" value="Send Message"/>
+        </div>
+        <div id="footer">
+            <p:graphicImage name="images/landing/logo-siberia-landing-footer.png" library="siberia-layout"/>
+            <span>PrimeFaces Premium Application Template</span>
+            <ul>
+                <li>
+                    <a href="#home">HOME</a>
+                </li>
+                <li>
+                    <a href="#features">FEATURES</a>
+                </li>
+                <li>
+                    <a href="#news">NEWS</a>
+                </li>
+                <li>
+                    <a href="#pricing">PRICING</a>
+                </li>
+                <li>
+                    <a href="#contact">CONTACT</a>
+                </li>
+            </ul>
+            <hr/>
+            <span>© PrimeTek Informatics 2020. All rights reserved.</span>
+        </div>
+
+    </div>
+
+    <h:outputStylesheet name="css/primeicons.css" library="siberia-layout"/>
+    <h:outputStylesheet name="css/primeflex.min.css" library="siberia-layout"/>
+    <h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css" library="siberia-layout"/>
+
+    <script>
+        //<![CDATA[
+        var $this = this;
+
+        $(document).ready(function () {
+            $('html').animate({scrollTop: 0}, 1);
+            $('body').animate({scrollTop: 0}, 1);
+        });
+
+        /* Scroll Animate */
+        $('a[href*="#"]:not([href="#"])').click(function () {
+            var target = $(this.hash);
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 60
+                }, 500);
+                return false;
+            }
+        });
+
+        //window and animation items
+        var animation_elements = $.find('.animation-element');
+        var web_window = $(window);
+
+        //check to see if any animation containers are currently in view
+        function check_if_in_view() {
+            //get current window information
+            var window_height = web_window.height();
+            var window_top_position = web_window.scrollTop();
+            var window_bottom_position = (window_top_position + window_height);
+
+            //iterate through elements to see if its in view
+            $.each(animation_elements, function () {
+                //get the element sinformation
+                var element = $(this);
+                var element_height = $(element).outerHeight();
+                var element_top_position = $(element).offset().top;
+                var element_bottom_position = (element_top_position + element_height);
+
+                //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
+
+                if ((element_top_position <= window_bottom_position)) {
+                    element.addClass('in-view');
+                }
+
+            });
+        }
+
+        //on or scroll, detect elements in view
+        $(window).on('scroll resize', function () {
+            check_if_in_view()
+        })
+        //trigger our scroll event on initial load
+        $(window).trigger('scroll');
+        //]]>
+    </script>
+</h:body>
+
+</html>

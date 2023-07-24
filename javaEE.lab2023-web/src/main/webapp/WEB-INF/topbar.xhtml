@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+<div class="layout-topbar">
+      <div class="layout-topbar-wrapper">
+          <div class="layout-topbar-left">
+          	  <div class="menu-button">
+                  <!-- <i class="pi pi-bars"/> -->
+              </div>
+               
+              <div class="menu-button" id="hamburguesa">
+                  
+              </div>
+              
+              <h:link id="logolink" outcome="/dashboard" class="layout-topbar-logo">
+                  <p:graphicImage name="images/#{guestPreferences.whiteLogo ?  'cargauy.png'  : 'layout-siberia-logo-black.png'}" library="siberia-layout"/>         
+              </h:link>                
+          </div>   
+          
+			<!-- BOTON PARA LOGUEAR START -->
+		<h:form style="margin-left: 72%; margin-top:4px;" id="login">
+             <p:splitButton value="Entrar" style="background-color: rgba(0, 0, 0, 0.12)" icon="pi pi-sign-in" styleClass="ui-button-info mr-2 mb-2">
+	             <p:menuitem value="GubUY" url="./loguearGubUy" icon="pi pi-arrow-up-right"/>
+	             <p:menuitem value="BackOffice" url="./login.xhtml" icon="pi pi-arrow-down-right"/>
+	         </p:splitButton>
+		</h:form>
+		
+  	   </div>
+  	   <ui:include src="./menu.xhtml"/>
+</div>
+
+</ui:composition>
+

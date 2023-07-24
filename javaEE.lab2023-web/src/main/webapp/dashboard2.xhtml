@@ -1,0 +1,556 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Dashboard</ui:define>
+
+    <ui:define name="head">
+        <h:outputScript name="js/chart.js" library="demo"/>
+        <script type="text/javascript">
+            $(function () {
+                new Chart(document.getElementById("dashboard-chart"), {
+                    type: 'bubble',
+                    data: {
+                        labels: "Sales",
+                        datasets: [
+                            {
+                                label: [""],
+                                backgroundColor: "rgba(0,0,0,0)",
+                                borderColor: "rgba(0,0,0,0)",
+                                data: [{
+                                    x: 5,
+                                    y: 20,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 10,
+                                    y: 20,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 20,
+                                    y: 30,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 35,
+                                    y: 90,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 35,
+                                    y: 150,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 45,
+                                    y: 130,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 50,
+                                    y: 140,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 60,
+                                    y: 100,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 65,
+                                    y: 90,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 75,
+                                    y: 130,
+                                    r: 10
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 85,
+                                    y: 120,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 85,
+                                    y: 150,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 90,
+                                    y: 160,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 90,
+                                    y: 100,
+                                    r: 10
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 100,
+                                    y: 180,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 110,
+                                    y: 150,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 120,
+                                    y: 100,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 120,
+                                    y: 190,
+                                    r: 10
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 130,
+                                    y: 200,
+                                    r: 15
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 135,
+                                    y: 220,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Sapphire"],
+                                backgroundColor: "#ffb16b",
+                                borderColor: "#ffb16b",
+                                data: [{
+                                    x: 145,
+                                    y: 200,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: [""],
+                                backgroundColor: "rgba(0,0,0,0)",
+                                borderColor: "rgba(0,0,0,0)",
+                                data: [{
+                                    x: 30,
+                                    y: 350,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 15,
+                                    y: 40,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 20,
+                                    y: 45,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 40,
+                                    y: 50,
+                                    r: 10
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 50,
+                                    y: 30,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 60,
+                                    y: 80,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 70,
+                                    y: 120,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 90,
+                                    y: 150,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 100,
+                                    y: 200,
+                                    r: 10
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 110,
+                                    y: 190,
+                                    r: 5
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 120,
+                                    y: 250,
+                                    r: 15
+                                }]
+                            },
+                            {
+                                label: ["Mirage"],
+                                backgroundColor: "#41cec6",
+                                borderColor: "#41cec6",
+                                data: [{
+                                    x: 140,
+                                    y: 200,
+                                    r: 5
+                                }]
+                            },
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: false,
+                        },
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: false,
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: false,
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+        </script>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="grid layout-dashboard">
+
+		<div class="col-12 lg:col-6">
+                <div class="card team">
+                    <div class="team-header">
+                        <h5>Equipo </h5>
+                        <div class="team-status">
+                            <div class="team-status-item">
+                                <div class="circle"></div>
+                                4 Online
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-content">
+                        <ul>
+                            <li>
+                                <div class="grid member">
+                                    <div class="col-7 team-box">
+                                        <div class="profile-image">
+                                            <p:graphicImage name="images/dashboard/avatar-lara.png"
+                                                            library="siberia-layout"/>
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div>
+                                            <h5 class="team-member">Federico Acosta</h5>
+                                            <span class="team-member-role">EL CHICO DE LOS NODOS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="grid member">
+                                    <div class="col-7 team-box">
+                                        <div class="profile-image">
+                                            <p:graphicImage name="images/dashboard/avatar-sergio.png"
+                                                            library="siberia-layout"/>
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div>
+                                            <h5 class="team-member">Pedro Aldama</h5>
+                                            <span class="team-member-role">EL CHICO MOBILE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="grid member">
+                                    <div class="col-7 team-box">
+                                        <div class="profile-image">
+                                            <p:graphicImage name="images/dashboard/avatar-chineze.png"
+                                                            library="siberia-layout"/>
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div>
+                                            <h5 class="team-member">Facundo Aparicio</h5>
+                                            <span class="team-member-role">EL CHICO DE LAS BASES</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="grid member">
+                                    <div class="col-7 team-box">
+                                        <div class="profile-image">
+                                            <p:graphicImage name="images/dashboard/avatar-charles.png"
+                                                            library="siberia-layout"/>
+                                            <div class="circle offline"></div>
+                                        </div>
+                                        <div>
+                                            <h5 class="team-member">Pablo Cristiani</h5>
+                                            <span class="team-member-role">EL CHICO DE LOS DIVS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-6">
+                <div class="card sales">
+                    <h5>Rutas Nacionales</h5>
+                    <div class="grid map-info-wrapper">
+                        <div class="col-6 map-info">
+                            <div class="map-info-header">
+                                <h5>10.953</h5>
+                                <p:graphicImage name="images/dashboard/1-f-1-fa-1-f-1-f-2.png"
+                                                library="siberia-layout"/>
+                            </div>
+                            <span>Most customers in US </span>
+                            <ul class="info-list">
+                                <li>
+                                    <p><i class="pi pi-circle-on intense"/> Intense</p>
+                                    <span>56k</span>
+                                </li>
+                                <li>
+                                    <p><i class="pi pi-circle-on high"/> High</p>
+                                    <span>25.8k</span>
+                                </li>
+                                <li>
+                                    <p><i class="pi pi-circle-on moderate"/> Moderate</p>
+                                    <span>14k</span>
+                                </li>
+                                <li>
+                                    <p><i class="pi pi-circle-on low"/> Low</p>
+                                    <span>3k</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6 sales-map">
+                            <p:graphicImage name="images/dashboard/world-low.png" library="siberia-layout"/>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+
+            <div class="col-12 lg:col-6">
+                <div class="card chat">
+                    <h5>Chat</h5>
+                    <div class="grid grid-nogutter message-row">
+                        <div class="col-fixed message-profile profile1">
+                            <span>SP</span>
+                        </div>
+                        <div class="col message">
+                            <div class="message-header">
+                                <h3>Sergio Pliego</h3>
+                                <span>15.08 PM</span>
+                            </div>
+                            <div class="message-content">
+                                <p>Hey Charles And Micheal, I heard there is a task about unexpected event occured
+                                    near San Mateo recently. Here is the accident report. Can you handle today?</p>
+                                <div class="message-atachment">
+                                    <p:graphicImage name="images/dashboard/file-excel.png" library="siberia-layout"/>
+                                    <div class="atachment-info">
+                                        <p>San_Mateo_Accident_Report.xls</p>
+                                        <span>24mb Spreadsheet file</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-nogutter message-row">
+                        <div class=" col-fixed message-profile profile2">
+                            <span>CD</span>
+                        </div>
+                        <div class=" col message">
+                            <div class="message-header">
+                                <h3>Charles Davies</h3>
+                                <span>15.08 PM</span>
+                            </div>
+                            <div class="message-content">
+                                <p>Sounds good for me.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-nogutter message-row">
+                        <div class=" col-fixed message-profile profile3">
+                            <span>SP</span>
+                        </div>
+                        <div class="col message">
+                            <div class="message-header">
+                                <h3>Sergio Pliego</h3>
+                                <span>15.08 PM</span>
+                            </div>
+                            <div class="message-content">
+                                <p>Great! See you on Sunday. Don't forget the bring coffee ☕️</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="new-message">
+                        <p:inputText placeholder="Enter your message"/>
+                        <i class="pi pi-plus"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

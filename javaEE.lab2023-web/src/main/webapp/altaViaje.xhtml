@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Admin. Empresa - Alta Viaje</ui:define>
+    
+    <ui:fragment rendered="#{empty UsuarioLogueadoBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+    
+    <ui:define name="content">
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 10%; margin-left:33%">
+                <div class="card" >
+                    <h5>Alta Viaje</h5>
+                    <h:form>
+                        <p:outputPanel id="grid">
+                            <div class="field grid">
+                                <p:outputLabel for="conductor" styleClass="col-fixed" value="Conductor" />
+                                <div class="col">
+									<p:selectOneMenu id="conductor" value="#{altaViajeBean.ciConductor}" required="true" requiredMessage="Campo obligatorio" >
+				                        <f:selectItems value="#{altaUsuarioBean.listarConductores}" />	
+				                    </p:selectOneMenu>
+                                    <p:message for="conductor"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="vehiculo" styleClass="col-fixed" value="Vehiculo" />
+                                <div class="col">
+									<p:selectOneMenu id="vehiculo" value="#{altaViajeBean.matricula}" required="true" requiredMessage="Campo obligatorio" >
+				                        <f:selectItems value="#{altaVehiculoBean.listarVehiculosAlDiaEmpresa}" />	
+				                    </p:selectOneMenu>
+                                    <p:message for="vehiculo"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="guia" styleClass="col-fixed" value="Guia" />
+                                <div class="col">
+                                    <p:inputText id="guia" value="#{altaViajeBean.idGuia}" readrequiredMessage="Campo obligatorio" readonly="true"/>
+                                    <p:message for="guia" />
+                                </div>
+                            </div>
+                        </p:outputPanel>
+        
+                        <p:commandButton id="submitButton"  action="#{altaViajeBean.submit}" style="margin-left:85%;" value="Alta"  update="grid" />
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

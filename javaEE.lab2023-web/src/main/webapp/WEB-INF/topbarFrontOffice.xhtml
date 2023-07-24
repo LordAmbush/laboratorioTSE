@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="layout-topbar">
+        <div class="layout-topbar-wrapper">
+            <div class="layout-topbar-left">
+                <div class="menu-button">
+					<ui:fragment rendered="#{UsuarioLogueadoBean.rol ne 'Publico'}">
+                    	<i class="pi pi-bars"/>
+        			</ui:fragment>
+                </div>
+                <h:link id="logolink" outcome="/frontoffice" class="layout-topbar-logo">
+                    <p:graphicImage name="images/#{guestPreferences.whiteLogo ?  'cargauy.png'  : 'layout-siberia-logo-black.png'}" library="siberia-layout"/>
+                </h:link>                
+            </div>  
+            
+           
+           <div class="layout-topbar-right">
+           
+           <ui:fragment rendered="#{usuarioBean.rol eq 'AdminEmpresa'}">
+                <ul class="layout-topbar-actions" style="padding-right: 20px;">
+                    <li class="topbar-item profile-item">
+                        <a href="#">
+                            <span class="profile-image-wrapper">
+                                <p:graphicImage name="images/topbar/user.png" library="siberia-layout"/>
+                            </span>
+                            <div class="profile-info-wrapper">
+                                <h3>Admin. Empresa</h3>
+                            </div>
+                        </a>
+                        <ul>
+                            <li class="layout-submenu-header">
+                                <h4>#{usuarioBean.ci}</h4>
+                                <h4>#{usuarioBean.nombreCompleto}</h4>
+                            </li>
+                            <li class="layout-submenu-header" style="text-align: center;">
+							    <h4 style="display: inline-block; margin: 0 auto;">#{usuarioBean.empresa}</h4>
+							</li>
+                            <li class="layout-submenu-item">
+                                <p:commandLink action="#{usuarioBean.logout()}" styleClass="menu-text">
+                                    <p>Cerrar Sesión</p>
+                                    <i class="pi pi-sign-in angle-icon"/>
+                                </p:commandLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+             </ui:fragment>
+             
+             <ui:fragment rendered="#{usuarioBean.rol eq 'Funcionario'}">
+                <ul class="layout-topbar-actions" style="padding-right: 20px;">
+                    <li class="topbar-item profile-item">
+                        <a href="#">
+                            <span class="profile-image-wrapper">
+                                <p:graphicImage name="images/topbar/user.png" library="siberia-layout"/>
+                            </span>
+                            <div class="profile-info-wrapper">
+                                <h3>Funcionario</h3>
+                            </div>
+                        </a>
+                        <ul>
+                            <li class="layout-submenu-header">
+                                <h4>#{usuarioBean.ci}</h4>
+                                <h4>#{usuarioBean.nombreCompleto}</h4>
+                            </li>
+                            <li class="layout-submenu-item">
+                                <p:commandLink action="#{usuarioBean.logout()}" styleClass="menu-text">
+                                    <p>Cerrar Sesión</p>
+                                    <i class="pi pi-sign-in angle-icon"/>
+                                </p:commandLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+             </ui:fragment>
+             
+             <ui:fragment rendered="#{usuarioBean.rol eq 'Publico'}">
+                <ul class="layout-topbar-actions" style="padding-right: 20px;">
+                    <li class="topbar-item profile-item">
+                        <a href="#">
+                            <span class="profile-image-wrapper">
+                                <p:graphicImage name="images/topbar/user.png" library="siberia-layout"/>
+                            </span>
+                            <div class="profile-info-wrapper">
+                                <h3>Publico</h3>
+                            </div>
+                        </a>
+                        <ul>
+                            <li class="layout-submenu-header">
+                                <h4>#{usuarioBean.ci}</h4>
+                                <h4>#{usuarioBean.nombre}</h4>
+                            </li>
+                            <li class="layout-submenu-item">
+                                <p:commandLink action="#{usuarioBean.logout()}" styleClass="menu-text">
+                                    <p>Cerrar Sesión</p>
+                                    <i class="pi pi-sign-in angle-icon"/>
+                                </p:commandLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+             </ui:fragment>
+                
+                
+            </div>
+           
+        </div>
+        <ui:include src="./menuFrontOffice.xhtml"/>
+    </div>
+    
+</ui:composition>

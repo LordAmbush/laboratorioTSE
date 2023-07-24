@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Admin. Empresa - Alta Guia</ui:define>
+    
+    <ui:define name="content">
+    
+    <ui:fragment rendered="#{empty UsuarioLogueadoBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 10%; margin-left:33%;">
+                <div class="card" >
+                    <h5>Alta Guia</h5>
+                    <h:form>
+                        <p:outputPanel id="grid">
+                            <div class="field grid align-items-start">
+                                <p:outputLabel for="origen" styleClass="col-fixed" value="Origen" />
+                                <div class="col">
+                                    <p:inputText id="origen" value="#{altaGuia.origen}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="origen" />
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="destino" styleClass="col-fixed" value="Destino" />
+                                <div class="col">
+                                    <p:inputText id="destino" value="#{altaGuia.destino}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="destino"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="volCarga" styleClass="col-fixed" value="Vol. Carga" />
+                                <div class="col">
+                                    <p:inputText id="volCarga" value="#{altaGuia.volumenDeCarga}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="volCarga"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="rubro" styleClass="col-fixed" value="Rubro" />
+                                <div class="col">
+									<p:selectOneMenu id="rubro" required="true" value="#{altaGuia.rubroSeleccionado}" requiredMessage="Campo obligatorio" >
+				                        <f:selectItems value="#{altaRubro.tiposRubro}" />
+				                    </p:selectOneMenu>
+                                    <p:message for="rubro"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="tCarga" styleClass="col-fixed" value="Tipo de Carga" />
+                                <div class="col">
+									<p:selectOneMenu id="tCarga" required="true" value="#{altaGuia.tipoCargaSeleccionado}" requiredMessage="Campo obligatorio" >
+										<f:selectItems value="#{altaTipoDeCarga.tiposDeCarga}" />				             
+				                    </p:selectOneMenu>
+                                    <p:message for="tCarga"/>
+                                </div>
+                            </div>
+                        </p:outputPanel>                  
+        
+                        <p:commandButton id="submitButton"  action="#{altaGuia.altaGuia()}" style="margin-left:85%;" value="Alta"  update="grid" />
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

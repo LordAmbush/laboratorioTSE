@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Messages</ui:define>
+    
+    <ui:define name="content">
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <h:form id="form">
+	            <div class="grid table-demo">
+	                <div class="col-12">
+	                    <div class="card">
+	                        <h5>Listado de Permisos</h5>
+	                        <p:dataTable widgetVar="customersDT" var="tipoCarga" value="#{altaTipoDeCarga.tiposDeCarga}" reflow="true"
+	                                    selection="#{dataTableDemoView.selectedCustomers}" rowKey="#{customer.id}" 
+	                                    paginator="true" rows="8" paginatorPosition="bottom" rowSelectMode="add">
+	                            <f:facet name="header">
+	                                <div class="customers-table-header">
+	                                    <span style="font-weight: bold">PERMISOS</span>
+	                                
+	                                    <span class="ui-input-icon-left filter-container">
+	                                        <i class="pi pi-search"/>
+	                                        <p:inputText id="globalFilter" onkeyup="PF('customersDT').filter()" placeholder="Buscador General"/>
+	                                    </span>
+	                                </div>
+	                            </f:facet>
+	                            <p:column headerText="Numero" sortBy="#{tipoCarga}" filterBy="#{tipoCarga}">
+	                                <h:outputText value="#{tipoCarga}" />
+	                            </p:column>
+	                            <p:column headerText="Valido desde" sortBy="#{tipoCarga}" filterBy="#{tipoCarga}">
+	                                <h:outputText value="#{tipoCarga}" />
+	                            </p:column>
+	                            <p:column headerText="Valido hasta" sortBy="#{tipoCarga}" filterBy="#{tipoCarga}">
+	                                <h:outputText value="#{tipoCarga}" />
+	                            </p:column>
+	                            <p:column headerText="Vehiculo" sortBy="#{tipoCarga}" filterBy="#{tipoCarga}">
+	                                <h:outputText value="#{tipoCarga}" />
+	                            </p:column>
+	                        </p:dataTable>
+	                    </div>
+	                </div>
+	             </div>
+	        </h:form>
+    </ui:define>
+
+</ui:composition>

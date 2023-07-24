@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Funcionario - Listado Empresas</ui:define>
+    
+    <ui:define name="content">
+    
+    <ui:fragment rendered="#{empty UsuarioLogueadoBean.ci}">
+            <script>
+            window.location.href = 'dashboard.xhtml';
+            </script>
+        </ui:fragment>
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <h:form id="form">
+            <div class="grid table-demo">
+                <div class="col-12">
+                    <div class="card">
+                        <h5>Listado de Empresas</h5>
+                        <p:dataTable widgetVar="empresasDT" var="empresa" value="#{altaEmpresaBean.populateEmpresas}" reflow="true" rowKey="#{empresa.nroEmpresa}" 
+                                    paginator="true" rows="8" paginatorPosition="bottom" rowSelectMode="add">
+                            <f:facet name="header">
+                                <div class="customers-table-header">
+                                    <span style="font-weight: bold">EMPRESAS</span>
+                                
+                                    <span class="ui-input-icon-left filter-container">
+	                                        <i class="pi pi-search"/>
+	                                        <p:inputText id="globalFilter" onkeyup="PF('empresasDT').filter()" placeholder="Buscador General"/>
+	                                </span>
+                                </div>
+                            </f:facet>
+                            <p:column headerText="Número" sortBy="#{empresa.nroEmpresa}" filterBy="#{empresa.nroEmpresa}">
+                                <h:outputText value="#{empresa.nroEmpresa}" />
+                            </p:column>
+                            <p:column headerText="Nombre" sortBy="#{empresa.nombreEmpresa}" filterBy="#{empresa.nombreEmpresa}">
+                                <h:outputText value="#{empresa.nombreEmpresa}" />
+                            </p:column>
+                            <p:column headerText="Razón Social" sortBy="#{empresa.razonSocial}" filterBy="#{empresa.razonSocial}">
+                                <h:outputText value="#{empresa.razonSocial}" />
+                            </p:column>
+                            <p:column headerText="Dirección" sortBy="#{empresa.direccion}" filterBy="#{empresa.direccion}">
+                                <h:outputText value="#{empresa.direccion}" />
+                            </p:column>
+                            <p:column headerText="Acciones" style="width: 8rem; text-align: center;">
+                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-primary" style="margin-left: 2px;"  actionListener="#{altaEmpresaBean.buttonClickedDelete(empresa)}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+             </div>
+        </h:form>
+        
+        
+    </ui:define>
+
+</ui:composition>

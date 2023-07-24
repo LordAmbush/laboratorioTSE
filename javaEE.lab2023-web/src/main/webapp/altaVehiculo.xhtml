@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Admin. Empresa - Alta Vehiculo</ui:define>
+    
+    <ui:define name="content">
+    
+    
+        <ui:fragment rendered="#{empty UsuarioLogueadoBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+    
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 10%; margin-left:33%">
+                <div class="card" >
+                    <h5>Alta Vehiculo</h5>
+                    <h:form>
+                        <p:outputPanel id="grid">
+                            <div class="field grid align-items-start">
+                                <p:outputLabel for="matricula" styleClass="col-fixed" value="Matricula" />
+                                <div class="col">
+                                    <p:inputText id="matricula" value="#{altaVehiculoBean.matricula}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="matricula" />
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="marca" styleClass="col-fixed" value="Marca" />
+                                <div class="col">
+                                    <p:inputText id="marca" value="#{altaVehiculoBean.marca}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="marca"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="modelo" styleClass="col-fixed" value="Modelo" />
+                                <div class="col">
+                                    <p:inputText id="modelo" value="#{altaVehiculoBean.modelo}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="modelo"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="capacidad" styleClass="col-fixed" value="Capacidad" />
+                                <div class="col">
+                                    <p:inputText id="capacidad" value="#{altaVehiculoBean.capacidad}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="capacidad"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="peso" styleClass="col-fixed" value="Peso" />
+                                <div class="col">
+                                    <p:inputText id="peso"  value="#{altaVehiculoBean.peso}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="peso"/>
+                                </div>
+                            </div>
+                        </p:outputPanel>                        
+                    
+        
+                        <p:commandButton id="submitButton"  action="#{altaVehiculoBean.submit()}" style="margin-left:85%;" value="Alta"  update="grid growl" />
+                        <p:growl id="growl" showDetail="true"/> 
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

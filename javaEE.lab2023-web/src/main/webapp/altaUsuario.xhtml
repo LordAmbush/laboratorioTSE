@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateBackAdmin.xhtml">
+	
+    <ui:define name="title">Administrador - Alta Usuario</ui:define>
+    
+    <ui:define name="content">
+    
+    
+            <ui:fragment rendered="#{empty BackofficeBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+    
+        
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 8%; margin-left:33%">
+                <div class="card" >
+                    <h5>Alta Usuario</h5>
+                    <h:form id="formulario">
+                        <p:outputPanel id="grid">
+                            <div class="field grid align-items-start">
+                                <p:outputLabel for="cedula" styleClass="col-fixed" value="Cedula" />
+                                <div class="col">
+                                    <p:inputText id="cedula" value="#{altaUsuarioBean.ci}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="cedula" />
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="email" styleClass="col-fixed" value="Email" />
+                                <div class="col">
+                                    <p:inputText id="email" value="#{altaUsuarioBean.email}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="email"/>
+                                </div>
+                            </div>
+   							<div class="field grid">
+                                <p:outputLabel for="tUsuario" styleClass="col-fixed" value="Tipo de Usuario" />
+                                <div class="col">
+									<p:selectOneMenu id="tUsuario" value="#{altaUsuarioBean.tipoUser}" required="true" requiredMessage="Campo obligatorio" onchange="changeCombo()">
+				                        <f:selectItem itemLabel="Seleccione uno" itemValue="" />
+				                        <f:selectItem itemLabel="Autoridad" itemValue="1" />
+				                        <f:selectItem itemLabel="Administrador" itemValue="2" />
+				                        <f:selectItem itemLabel="Administrador de Empresa" itemValue="3" />
+				                        <f:selectItem itemLabel="Conductor" itemValue="4" />
+				                        <f:selectItem itemLabel="Funcionario" itemValue="5" />
+				                    </p:selectOneMenu>
+                                    <p:message for="tUsuario"/>
+                                </div>
+                            </div>
+							<div class="field grid">
+                                <p:outputLabel for="password" id="labelPass" styleClass="col-fixed" value="Contraseña" style="display: none" />
+                                <div class="col">
+                                    <p:inputText type="password" id="password" value="#{altaUsuarioBean.pass}" required="false" requiredMessage="Campo obligatorio" style="display: none" />
+                                    <p:message for="password"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="empresa" id="labelEmpresa" styleClass="col-fixed" value="Empresa" style="display: none"/>
+                                <div class="col">
+									<p:selectOneMenu id="empresa" value="#{altaUsuarioBean.empresaSeleccionada}" required="false" requiredMessage="Campo obligatorio" styleClass="empresa-combo" style="display: none">
+										<f:selectItems value="#{altaEmpresaBean.listarEmpresas}" />
+				                    </p:selectOneMenu>
+                                    <p:message for="empresa"/>
+                                </div>
+                            </div>
+                        </p:outputPanel>
+        
+                        <p:commandButton id="submitButton"  style="margin-left:85%;" action="#{altaUsuarioBean.altaUser()}" value="Alta"  update="grid growl" />
+                        <p:growl id="growl" showDetail="true"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        
+        
+        <script>
+	        function handleComplete(xhr, status, args) {
+	            if (args.validationFailed || !args.success) {
+	                // Mostrar mensaje de error
+	                PF('growl').renderMessage({severity: 'error', summary: 'Error', detail: 'Ocurrió un error al procesar el formulario.'});
+	            } else {
+	                // Mostrar mensaje de éxito
+	                PF('growl').renderMessage({severity: 'success', summary: 'Éxito', detail: 'El formulario se procesó correctamente.'});
+	            }
+	        }
+
+        
+            function changeCombo() {
+                var tUsuarioValue = $('#formulario\\:tUsuario_input').val();
+                var empresaCombo = $('#formulario\\:empresa');
+                var inputContra = $('#formulario\\:password');
+                var labelEmp = $('#formulario\\:labelEmpresa');
+                var labelContra = $('#formulario\\:labelPass');
+
+                if (tUsuarioValue == '3' || tUsuarioValue == '4') {
+                	empresaCombo.show();
+                    labelEmp.show();
+                } else {
+                	empresaCombo.hide();
+                    labelEmp.hide();
+                }
+
+                if (tUsuarioValue == '1' || tUsuarioValue == '2') {
+                	labelContra.show();
+                    inputContra.show();
+                } else {
+                	labelContra.hide();
+                    inputContra.hide();
+                }
+            }
+        </script>
+        
+    </ui:define>
+
+</ui:composition>

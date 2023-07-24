@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Admin. Empresa - Alta Permiso</ui:define>
+    
+    <ui:define name="content">
+    
+    <ui:fragment rendered="#{empty UsuarioLogueadoBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+    
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 10%; margin-left:33%;">
+                <div class="card" >
+                    <h5>Alta Permiso de Circulacion</h5>
+                    <h:form>
+                        <p:outputPanel id="grid">
+                           <div class="field grid">
+                                <p:outputLabel for="fechaDesde" styleClass="col-fixed" value="Validez Desde" />
+                                <div class="col">
+                                    <p:datePicker id="fechaDesde" value="#{altaPNCBean.fechaDesde}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="fechaDesde"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="fechaHasta" styleClass="col-fixed" value="Validez Hasta" />
+                                <div class="col">
+                                    <p:datePicker id="fechaHasta" value="#{altaPNCBean.fechaHasta}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="fechaHasta"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="vehiculo" styleClass="col-fixed" value="Vehiculo" />
+                                <div class="col">
+									<p:selectOneMenu id="vehiculo" required="true" value="#{altaPNCBean.matricula}" requiredMessage="Campo obligatorio" >
+				                        <f:selectItems value="#{altaVehiculoBean.listarVehiculosPERMISOSVENCIDOS()}" />
+				                    </p:selectOneMenu>
+                                    <p:message for="vehiculo"/>
+                                </div>
+                            </div>
+                        </p:outputPanel>                        
+                    
+        
+                        <p:commandButton id="submitButton"  style="margin-left:85%;" value="Alta" action="#{altaPNCBean.altaPNC()}" update="grid" />
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

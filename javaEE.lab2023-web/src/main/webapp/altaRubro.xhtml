@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateBackAdmin.xhtml">
+
+    <ui:define name="title">Administrador - Alta Rubro</ui:define>
+    
+    <ui:define name="content">
+    
+    <ui:fragment rendered="#{empty BackofficeBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+    
+    
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 10%; margin-left:33%">
+                <div class="card" >
+                    <h5>Alta Rubro</h5>
+                    <h:form>
+                        <p:outputPanel id="grid">
+                            <div class="field grid align-items-start">
+                                <p:outputLabel for="rubro" styleClass="col-fixed" value="Nombre" />
+                                <div class="col">
+                                    <p:inputText id="rubro" value="#{altaRubro.nombre}" required="true" requiredMessage="Campo obligatorio" />
+                                    <p:message for="rubro" />
+                                </div>
+                            </div>
+                        </p:outputPanel>                        
+                    
+        
+                        <p:commandButton id="submitButton"  style="margin-left:85%;" action="#{altaRubro.altaRubro()}" value="Alta"  update="grid growl" />
+                        <p:growl id="growl" showDetail="true"/> 
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

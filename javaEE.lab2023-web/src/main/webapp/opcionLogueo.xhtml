@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Menu</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="grid ui-fluid" style="margin-left: 35%; margin-top: 5%;">
+                <div class="col-12 md:col-6">
+                    <div class="card">
+                        <h5>Opcion de logueo</h5>
+                        <p:tabMenu activeIndex="#{param.i}">
+                            <p:menuitem value="GubUY" outcome="/opcionLogueo" icon="pi pi-home">
+                                <f:param name="i" value="0" />
+                            </p:menuitem>
+                            <button id="j_idt96:j_idt165" name="i" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-button-raised mr-2 mb-2" onclick="window.open('\/test\-web\/button.xhtml','_self')" role="button" aria-disabled="false"><span class="ui-button-text ui-c">Primary</span></button>
+                            <p:menuitem value="BackOffice" outcome="/opcionLogueo" icon="pi pi-users">
+                                <f:param name="i" value="1"/>
+                            </p:menuitem>
+                        </p:tabMenu>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+            
+    </ui:define>
+
+</ui:composition>

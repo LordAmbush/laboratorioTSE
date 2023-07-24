@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateBackAdmin.xhtml">
+
+    <ui:define name="title">Administrador - Listado Usuario</ui:define>
+    
+    <ui:define name="content">
+        <h:head>
+            <style>
+    .status {
+        display: inline-block;
+        padding: 1px 8px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    
+    .status-active {
+        background-color: #4CAF50;
+    }
+    
+    .status-inactive {
+        background-color: #F44336;
+    }
+</style>
+
+        </h:head>
+    
+                <ui:fragment rendered="#{empty BackofficeBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <h:form id="form">
+            <div class="grid crud-demo">
+                <div class="col-12">
+                    <div class="card">
+                        <p:growl id="messages" showDetail="true" />
+						<h5>Listado de Usuarios</h5>
+                        <p:dataTable id="dt-products" widgetVar="dtViajes" var="viajes" value="#{altaUsuarioBean.populateUsuarios}" reflow="true" styleClass="products-table"
+                                    rowKey="#{viajes.ci}" paginator="true" rows="10" rowSelectMode="add" paginatorPosition="bottom">
+                            <f:facet name="header">
+                                <div class="products-table-header">
+                                    <span style="font-weight: bold">USUARIOS</span>
+                                
+                                    <span class="filter-container ui-input-icon-left">
+                                        <i class="pi pi-search"></i>
+                                        <p:inputText id="globalFilter" onkeyup="PF('dtViajes').filter()" placeholder="Buscador General..." />
+                                    </span>
+                                </div>
+                            </f:facet>
+
+							<p:column headerText="Cedula" sortBy="#{viajes.ci}" filterBy="#{viajes.ci}">
+                                <h:outputText value="#{viajes.ci}" />
+                            </p:column>
+                            <p:column headerText="Usuario" sortBy="#{viajes.username}" filterBy="#{viajes.username}" width="13%">
+                                <h:outputText value="#{viajes.username}" />
+                            </p:column>
+                            <p:column headerText="Email" sortBy="#{viajes.email}" filterBy="#{viajes.email}" width="18%">
+                                <h:outputText value="#{viajes.email}" />
+                            </p:column>
+                            <p:column headerText="Fecha de Nacimiento" sortBy="#{viajes.fechaNac}" filterBy="#{viajes.fechaNac}" width="13%">
+                                <h:outputText value="#{viajes.fechaNac}" />
+                            </p:column>
+                            <p:column headerText="Tipo" sortBy="#{viajes.tipoUsuario}" filterBy="#{viajes.tipoUsuario}">
+                                <h:outputText value="#{viajes.tipoUsuario}" />
+                            </p:column>
+                            <p:column headerText="Empresa" sortBy="#{viajes.empresa}" filterBy="#{viajes.empresa}">
+                                <h:outputText value="#{viajes.empresa}" />
+                            </p:column>
+                            <p:column headerText="Estado" sortBy="#{viajes.status}" filterBy="#{viajes.status}">
+                            
+                            <ui:fragment rendered="#{viajes.status eq 'Activo'}">
+                                <span class="status status-active">#{viajes.status}</span>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{viajes.status eq 'Inactivo'}">
+                                <span class="status status-inactive">#{viajes.status}</span>
+                            </ui:fragment>
+                            
+                            </p:column>
+                            <p:column headerText="Operaciones" style="width: 8rem; text-align: center;">
+                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-primary" actionListener="#{altaUsuarioBean.buttonClickedDelete(viajes)}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

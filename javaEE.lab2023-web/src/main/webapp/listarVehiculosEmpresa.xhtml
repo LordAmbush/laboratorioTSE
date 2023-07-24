@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Admin. Empresa - Listado Vehiculos</ui:define>
+    
+    <ui:define name="content">
+        <p:tooltip />
+
+        <h:form id="form">
+	            <div class="grid table-demo">
+	                <div class="col-12">
+	                    <div class="card">
+	                        <h5>Listado de Vehiculos</h5>
+	                        <h5 style="font-weight: normal">#{UsuarioLogueadoBean.empresa}</h5>
+	                        <p:dataTable widgetVar="vehiculosDT" var="vehiculo" value="#{altaVehiculoBean.populateVehiculosEmpresa}" reflow="true"
+	                                    selection="#{dataTableDemoView.selectedCustomers}" rowKey="#{vehiculo.matricula}" 
+	                                    paginator="true" rows="8" paginatorPosition="bottom" rowSelectMode="add">
+	                            <f:facet name="header">
+	                                <div class="customers-table-header">
+	                                    <span style="font-weight: bold">VEHICULOS</span>
+	                                
+	                                    <span class="ui-input-icon-left filter-container">
+	                                        <i class="pi pi-search"/>
+	                                        <p:inputText id="globalFilter" onkeyup="PF('vehiculosDT').filter()" placeholder="Buscador General"/>
+	                                    </span>
+	                                </div>
+	                            </f:facet>
+	                            <p:column headerText="Matricula" sortBy="#{vehiculo.matricula}" filterBy="#{vehiculo.matricula}">
+	                                <h:outputText value="#{vehiculo.matricula}" />
+	                            </p:column>
+	                            <p:column headerText="Marca" sortBy="#{vehiculo.marca}" filterBy="#{vehiculo.marca}">
+	                                <h:outputText value="#{vehiculo.marca}" />
+	                            </p:column>
+	                            <p:column headerText="Modelo" sortBy="#{vehiculo.modelo}" filterBy="#{vehiculo.modelo}">
+	                                <h:outputText value="#{vehiculo.modelo}" />
+	                            </p:column>
+	                            <p:column headerText="Capacidad" sortBy="#{vehiculo.capacidad}" filterBy="#{vehiculo.capacidad}">
+	                                <h:outputText value="#{vehiculo.capacidad}" />
+	                            </p:column>
+	                            <p:column headerText="Peso" sortBy="#{vehiculo.peso}" filterBy="#{vehiculo.peso}">
+	                                <h:outputText value="#{vehiculo.peso}" />
+	                            </p:column>
+	                             <p:column headerText="Acciones" style="width: 8rem; text-align: center;">
+	                                <p:commandButton icon="pi pi-pencil" styleClass="ui-button-primary" actionListener="#{altaVehiculoBean.editarVehiculo(vehiculo)}" style="margin-left: 2%" />
+	                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-primary" actionListener="#{altaVehiculoBean.borrarVehiculo(vehiculo)}" style="margin-left: 2%" update="growl"/>
+	                                	                     	                        <p:growl id="growl" showDetail="true"/> 
+	                                
+	                            </p:column>
+	                        </p:dataTable>
+	                    </div>
+	                </div>
+	             </div>	             
+	        </h:form>
+    </ui:define>
+
+</ui:composition>

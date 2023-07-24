@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Funcionario - Listado VehiculosEmpresa</ui:define>
+    
+    <ui:define name="content"> 
+    
+    
+            <h:head>
+	            <style>
+			    .status {
+			        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        background-color: red;
+        color: white;" />
+			    } 
+			    .statu-vencido {
+			        background-color: #F44336;
+			    }
+				</style>
+        </h:head>
+    
+       
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="col-12">
+                    <div class="card">
+                        <h5>Vehiculos agrupados por Empresa</h5>
+                        <p:dataTable var="vehiculo" scrollable="true" scrollHeight="600" rowKey="#{vehiculo.matricula}"
+                                     value="#{altaVehiculoBean.populateVehiculos}" sortBy="#{vehiculo.empresa}">
+                            <p:headerRow field="empresa">
+                            
+                                <p:column colspan="6">
+                                    <div class="inline-flex align-items-center" style="vertical-align: middle">
+                                        <h:outputText value="#{vehiculo.empresa}" style="display: inline-block;
+        padding: 2px 6px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        background-color: #036fab;
+        color: white;" />
+                                    </div>
+                                </p:column>
+                                
+                            </p:headerRow>
+
+                            <p:column headerText="Matricula">
+                                <h:outputText value="#{vehiculo.matricula}"/>
+                            </p:column>
+
+                            <p:column headerText="Marca">
+                                <h:outputText value="#{vehiculo.marca}"/>
+                            </p:column>
+
+                            <p:column headerText="Modelo">
+                                <h:outputText value="#{vehiculo.modelo}"/>
+                            </p:column>
+
+                            <p:column headerText="Capacidad">
+                                <h:outputText value="#{vehiculo.capacidad}"/>
+                            </p:column>
+
+                            <p:column headerText="Peso">
+                                <h:outputText value="#{vehiculo.peso}"/>
+                            </p:column>
+                            
+                            <p:column headerText="ITV (valido hasta)">
+                            
+                            <ui:fragment rendered="#{vehiculo.itv eq 'VENCIDO'}">
+                                <span class="status status-vencido">#{vehiculo.itv}</span>
+                            </ui:fragment>
+                            
+                            
+                            <ui:fragment rendered="#{vehiculo.itv ne 'VENCIDO'}">
+                                <h:outputText value="#{vehiculo.itv}"/>
+                            </ui:fragment>
+                            
+                            </p:column>
+                            
+                            <p:column headerText="PERMISO (valido hasta)">
+                            
+                            <ui:fragment rendered="#{vehiculo.permiso eq 'VENCIDO'}">
+                                <span class="status status-vencido">#{vehiculo.permiso}</span>
+                            </ui:fragment>
+                            
+                            
+                            <ui:fragment rendered="#{vehiculo.permiso ne 'VENCIDO'}">
+                                <h:outputText value="#{vehiculo.permiso}"/>
+                            </ui:fragment>
+                            
+                            </p:column>
+                            
+                            
+                        </p:dataTable>
+                    </div>
+                </div>
+    </ui:define>
+
+</ui:composition>

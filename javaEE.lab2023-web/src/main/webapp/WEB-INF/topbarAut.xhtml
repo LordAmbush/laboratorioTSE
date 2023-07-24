@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+<ui:fragment rendered="#{not empty BackofficeBean.ci}">
+  <!-- Contenido de la barra de arriba aquí -->
+
+<div class="layout-topbar">
+      <div class="layout-topbar-wrapper">
+          <div class="layout-topbar-left">
+              <div class="menu-button">
+                  <!-- <i class="pi pi-bars"/> -->
+              </div>
+              <h:link id="logolink" class="layout-topbar-logo">
+                  <p:graphicImage name="images/#{guestPreferences.whiteLogo ?  'cargauy.png'  : 'layout-siberia-logo-black.png'}" library="siberia-layout"/>
+              </h:link>                
+          </div> 
+          
+          <div class="layout-topbar-right">
+                <ul class="layout-topbar-actions" style="padding-right: 20px;">
+                    <li class="topbar-item profile-item">
+                        <a href="#">
+                            <span class="profile-image-wrapper">
+                                <p:graphicImage name="images/topbar/user.png" library="siberia-layout"/>
+                            </span>
+                            <div class="profile-info-wrapper">
+                                <h3>Autoridad</h3>
+                            </div>
+                        </a>
+                        <ul>
+                            <li class="layout-submenu-header">
+                                <h4>#{BackofficeBean.ci}</h4>
+                                <h4>#{BackofficeBean.username}</h4>
+                            </li>
+                            <li class="layout-submenu-item">
+                                <p:commandLink action="#{BackofficeBean.logout()}" styleClass="menu-text">
+                                    <p>Cerrar Sesión</p>
+                                    <i class="pi pi-sign-in angle-icon"/>
+                                </p:commandLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+          
+          
+            
+  	   </div>
+  	   <ui:include src="./menuAdmin.xhtml"/>
+</div>
+</ui:fragment>
+      
+      
+      
+      
+      
+</ui:composition>
+

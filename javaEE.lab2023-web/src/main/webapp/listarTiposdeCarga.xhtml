@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateBackAdmin.xhtml">
+
+    <ui:define name="title">Administrador - Listado Cargas</ui:define>
+    
+    <ui:define name="content">
+    
+                <ui:fragment rendered="#{empty BackofficeBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <h:form id="form">
+            <div class="grid table-demo">
+                <div class="col-12">
+                    <div class="card">
+                        <h5>Listado de Tipo de Cargas</h5>
+                        <p:dataTable widgetVar="customersDT" var="tipoCarga" value="#{altaTipoDeCarga.tiposDeCarga}" reflow="true"
+                                    selection="#{dataTableDemoView.selectedCustomers}" rowKey="#{customer.id}" 
+                                    paginator="true" rows="8" paginatorPosition="bottom" rowSelectMode="add">
+                            <f:facet name="header">
+                                <div class="customers-table-header">
+                                    <span style="font-weight: bold">TIPOS DE CARGA</span>
+                                
+                                    <span class="ui-input-icon-left filter-container">
+                                        <i class="pi pi-search"/>
+                                        <p:inputText id="globalFilter" onkeyup="PF('customersDT').filter()" placeholder="Buscador General"/>
+                                    </span>
+                                </div>
+                            </f:facet>
+                            <p:column headerText="Nombre" sortBy="#{tipoCarga}" filterBy="#{tipoCarga}">
+                                <h:outputText value="#{tipoCarga}" />
+                            </p:column>
+                            <p:column headerText="Operaciones" style="width: 8rem; text-align: center;">
+                                <p:commandButton icon="pi pi-trash" styleClass="ui-button-primary" actionListener="#{altaTipoDeCarga.buttonClickedDelete(tipoCarga)}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+             </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

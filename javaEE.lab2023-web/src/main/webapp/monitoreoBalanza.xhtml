@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/templateFrontOffice.xhtml">
+
+    <ui:define name="title">Funcionario - Monitoreo de Balanzas</ui:define>
+    
+    <ui:define name="content">
+    
+    <ui:fragment rendered="#{empty UsuarioLogueadoBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+        <p:tooltip />
+
+
+        <h:form id="form">
+            <div class="grid crud-demo">
+                <div class="col-12">
+                    <div class="card">
+                        <p:growl id="messages" showDetail="true" />
+						<h5>Monitoreo de Pesadas</h5>
+                        <p:dataTable id="dt-products" widgetVar="dtViajes" var="viajes" value="#{crudDemoView.infoBalanza}" reflow="true" styleClass="products-table"
+                                    rowKey="#{viajes.id}" paginator="true" rows="10" rowSelectMode="add" paginatorPosition="bottom">
+                            <f:facet name="header">
+                                <div class="products-table-header">
+                                    <span style="font-weight: bold">PESADAS</span>
+                                
+                                    <span class="filter-container ui-input-icon-left">
+                                        <i class="pi pi-search"></i>
+                                        <p:inputText id="globalFilter" onkeyup="PF('dtViajes').filter()" placeholder="Buscador General..." />
+                                    </span>
+                                </div>
+                            </f:facet>
+
+							<p:column headerText="N. Pesada" sortBy="#{viajes.id}" filterBy="#{viajes.id}" width="13%" >
+                                <h:outputText value="#{viajes.id}" />
+                            </p:column>
+                            <p:column headerText="Peso" sortBy="#{viajes.peso}" filterBy="#{viajes.peso}" width="13%" >
+                                <h:outputText value="#{viajes.peso}" />
+                            </p:column>
+                            <p:column headerText="Viaje" sortBy="#{viajes.viaje}" filterBy="#{viajes.viaje}" width="13%"  >
+                                <h:outputText value="#{viajes.viaje}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        
+        
+    </ui:define>
+
+</ui:composition>

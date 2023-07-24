@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templateBackAutoridad.xhtml">
+
+    <ui:define name="title">BackOffice - Autoridad</ui:define>
+
+    <ui:define name="content">
+    
+        <ui:fragment rendered="#{empty BackofficeBean.ci}">
+            <script>
+            window.location.href = 'access.xhtml';
+            </script>
+        </ui:fragment>
+    
+    
+    	<div class="grid ui-fluid">
+            <div class="col-12 lg:col-4">
+                <div class="card">
+                    <h5>Viajes - Empresas</h5>
+                    <p:barChart model="#{chartDemoView.barEmpresasViajes}" style="width: 100%; height: 500px;"/>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4">
+                <div class="card">
+                    <h5>Usuarios - Tipo</h5>
+                    <p:barChart model="#{chartDemoView.barUsuariosTipos}" style="width: 100%; height: 500px;"/>
+                </div>
+            </div>
+
+
+            <div class="col-12 lg:col-4">
+                <div class="card">
+                    <h5>Vehiculos - Empresas</h5>
+                    <p:barChart model="#{chartDemoView.barEmpresasVehiculos}" style="width: 100%; height: 500px;"/>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4">
+                <div class="card">
+                    <h5>Viajes - Rubros</h5>
+                    <p:pieChart model="#{chartDemoView.pieViajesRubros}" style="width: 100%; height: 500px;"/>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4">
+                <div class="card">
+                    <h5>Viajes - Tipos de Cargas</h5>
+                    <p:pieChart model="#{chartDemoView.pieViajesTiposdeCarga}" style="width: 100%; height: 500px;"/>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4">
+                <div class="card">
+                    <h5>Volumenes de Cargas - Rubros</h5>
+                    <p:pieChart model="#{chartDemoView.pieVolumenesdeCargaRubros}" style="width: 100%; height: 500px;"/>
+                </div>
+            </div>  
+        </div>
+    
+        <h:form id="form">
+            <div class="grid crud-demo">
+                <div class="col-12">
+                    <div class="card">
+                        <p:growl id="messages" showDetail="true" />
+
+                        <p:toolbar styleClass="mb-4">
+                            <p:toolbarGroup align="center">
+                                <p:commandButton value="Exportar a PDF" icon="pi pi-upload" styleClass="ui-button-text" ajax="false">
+                                    <p:dataExporter type="pdf" target="dt-products" fileName="reporteViajes"/>
+                                </p:commandButton>
+                            </p:toolbarGroup>
+                        </p:toolbar>
+
+                        <p:dataTable id="dt-products" widgetVar="dtViajes" var="viajes" value="#{crudDemoView.infoViajes}" reflow="true" styleClass="products-table"
+                                    rowKey="#{viajes.idViaje}" paginator="true" rows="10" rowSelectMode="add" paginatorPosition="bottom">
+                            <f:facet name="header">
+                                <div class="products-table-header">
+                                    <span style="font-weight: bold">Manejador de Viajes</span>
+                                
+                                    <span class="filter-container ui-input-icon-left">
+                                        <i class="pi pi-search"></i>
+                                        <p:inputText id="globalFilter" onkeyup="PF('dtViajes').filter()" placeholder="Buscador General..." />
+                                    </span>
+                                </div>
+                            </f:facet>
+
+							<p:column headerText="Viaje" sortBy="#{viajes.idViaje}" filterBy="#{viajes.idViaje}">
+                                <h:outputText value="#{viajes.idViaje}" />
+                            </p:column>
+                            <p:column headerText="Estado" sortBy="#{viajes.estado}" filterBy="#{viajes.estado}" width="13%">
+                                <h:outputText value="#{viajes.estado}" />
+                            </p:column>
+                            <p:column headerText="Inicio" sortBy="#{viajes.inicio}" filterBy="#{viajes.inicio}" width="13%">
+                                <h:outputText value="#{viajes.inicio}" />
+                            </p:column>
+                            <p:column headerText="Fin" sortBy="#{viajes.fin}" filterBy="#{viajes.fin}">
+                                <h:outputText value="#{viajes.fin}" />
+                            </p:column>
+                            <p:column headerText="Conductor" sortBy="#{viajes.conductor}" filterBy="#{viajes.conductor}">
+                                <h:outputText value="#{viajes.conductor}" />
+                            </p:column>
+                            <p:column headerText="Vehiculo" sortBy="#{viajes.vehiculo}" filterBy="#{viajes.vehiculo}">
+                                <h:outputText value="#{viajes.vehiculo}" />
+                            </p:column>
+                            <p:column headerText="Guia" sortBy="#{viajes.idGuia}" filterBy="#{viajes.idGuia}">
+                                <h:outputText value="#{viajes.idGuia}" />
+                            </p:column>
+                            <p:column headerText="T. de Carga" sortBy="#{viajes.tdeCarga}" filterBy="#{viajes.tdeCarga}">
+                                <h:outputText value="#{viajes.tdeCarga}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

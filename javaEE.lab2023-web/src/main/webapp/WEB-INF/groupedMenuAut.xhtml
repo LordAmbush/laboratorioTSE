@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:sb="http://primefaces.org/siberia">
+
+    <sb:menu widgetVar="SiberiaMenuWidget">
+        
+        <p:submenu id="m_homepage" label="Favoritos" icon="pi pi-fw pi-home">
+            <p:menuitem id="m_dashboard" value="Inicio" icon="pi pi-fw pi-home" outcome="/administrador"/>
+        </p:submenu>
+        
+        <p:submenu id="m_hierarchy" label="Opciones" icon="pi pi-fw pi-align-left">
+	           <p:submenu id="m_sm11" label="Altas" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="m_lnk114" value="Alta Usuario" icon="pi pi-fw pi-align-left" url="altaUsuario.xhtml"/>
+	               <p:menuitem id="m_lnk113" value="Alta Rubro" icon="pi pi-fw pi-align-left" url="altaRubro.xhtml"/>
+	               <p:menuitem id="m_lnk116" value="Alta Tipo de Carga" icon="pi pi-fw pi-align-left" url="altaTipodeCarga.xhtml"/>
+	           </p:submenu>
+	           <p:submenu id="m_sm11" label="Listados" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="m_lnk114" value="Usuarios" icon="pi pi-fw pi-align-left" url="altaUsuario.xhtml"/>
+	               <p:menuitem id="m_lnk113" value="Rubros" icon="pi pi-fw pi-align-left" url="altaRubro.xhtml"/>
+	               <p:menuitem id="m_lnk116" value="Tipos de Carga" icon="pi pi-fw pi-align-left" url="altaTipodeCarga.xhtml"/>
+	           </p:submenu>
+        </p:submenu>
+        
+        
+        
+      
+    </sb:menu>
+
+</ui:composition>

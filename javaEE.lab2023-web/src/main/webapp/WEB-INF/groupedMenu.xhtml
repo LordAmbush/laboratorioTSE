@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:sb="http://primefaces.org/siberia">
+
+    <sb:menu widgetVar="SiberiaMenuWidget">
+        
+        <p:submenu id="m_homepage" label="Favoritos" icon="pi pi-fw pi-home">
+            <p:menuitem id="m_dashboard" value="Inicio" icon="pi pi-fw pi-home" outcome="/dashboard"/>
+        </p:submenu>
+        
+        <p:submenu id="m_hierarchy" label="Casos de Uso" icon="pi pi-fw pi-align-left">
+	           <p:submenu id="m_sm01" label="Altas" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="m_lnk111" value="Alta Empresa" icon="pi pi-fw pi-align-left" url="altaEmpresa.xhtml"/>
+	               <p:menuitem id="m_lnk112" value="Alta Vehiculo" icon="pi pi-fw pi-align-left" url="altaVehiculo.xhtml"/>
+	               <p:menuitem id="m_lnk113" value="Alta Rubro" icon="pi pi-fw pi-align-left" url="altaRubro.xhtml"/>
+	               <p:menuitem id="m_lnk114" value="Alta Usuario" icon="pi pi-fw pi-align-left" url="altaUsuario.xhtml"/>
+	               <p:menuitem id="m_lnk115" value="Alta Viaje" icon="pi pi-fw pi-align-left" url="altaViaje.xhtml"/>
+	               <p:menuitem id="m_lnk116" value="Alta Tipo de Carga" icon="pi pi-fw pi-align-left" url="altaTipodeCarga.xhtml"/>
+	               <p:menuitem id="m_lnk117" value="Alta Guia" icon="pi pi-fw pi-align-left" url="altaGuia.xhtml"/>
+	               <p:menuitem id="m_lnk118" value="Alta Permiso de Circulacion" icon="pi pi-fw pi-align-left" url="altaPCirculacion.xhtml"/>
+	               <p:menuitem id="m_lnk119" value="Alta ITV" icon="pi pi-fw pi-align-left" url="altaITV.xhtml"/>
+	           </p:submenu>
+	           <p:submenu id="m_sm02" label="Listados" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="l_lnk01" value="Listar Empresas" icon="pi pi-fw pi-align-left" url="listarEmpresas.xhtml"/>
+	               <p:menuitem id="l_lnk02" value="Listar Vehiculos" icon="pi pi-fw pi-align-left" url="listarVehiculos.xhtml"/>
+	               <p:menuitem id="l_lnk03" value="Listar Rubros" icon="pi pi-fw pi-align-left" url="listarRubros.xhtml"/>
+	               <p:menuitem id="l_lnk04" value="Listar Usuarios" icon="pi pi-fw pi-align-left" url="listarUsuarios.xhtml"/>
+	               <p:menuitem id="l_lnk05" value="Listar Viajes" icon="pi pi-fw pi-align-left" url="listarViajes.xhtml"/>
+	               <p:menuitem id="l_lnk06" value="Listar Tipos de Carga" icon="pi pi-fw pi-align-left" url="listarTiposdeCarga.xhtml"/>
+	               <p:menuitem id="l_lnk07" value="Listar Guias" icon="pi pi-fw pi-align-left" url="listarGuias.xhtml"/>
+	               <p:menuitem id="l_lnk08" value="Listar Permisos" icon="pi pi-fw pi-align-left" url="listarPermisos.xhtml"/>
+	               <p:menuitem id="l_lnk09" value="Listar ITVs" icon="pi pi-fw pi-align-left" url="listarITVs.xhtml"/>
+	           </p:submenu>
+        </p:submenu>
+    </sb:menu>
+
+</ui:composition>

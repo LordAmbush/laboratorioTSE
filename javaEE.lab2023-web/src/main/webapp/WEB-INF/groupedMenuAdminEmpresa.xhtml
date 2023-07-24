@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:sb="http://primefaces.org/siberia">
+
+    <sb:menu widgetVar="SiberiaMenuWidget">
+        
+        <p:submenu id="m_homepage" label="Favoritos" icon="pi pi-fw pi-home">
+            <p:menuitem id="m_dashboard" value="Inicio" icon="pi pi-fw pi-home" outcome="/frontoffice"/>
+        </p:submenu>
+        
+        <p:submenu id="m_hierarchy" label="Operaciones" icon="pi pi-fw pi-align-left">
+	           <p:submenu id="m_sm10" label="Altas" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="m_lnk110" value="Alta Vehiculo" icon="pi pi-fw pi-align-left" url="altaVehiculo.xhtml"/>
+	               <p:menuitem id="m_lnk111" value="Alta Guia" icon="pi pi-fw pi-align-left" url="altaGuia.xhtml"/>
+	               <p:menuitem id="m_lnk112" value="Alta ITV" icon="pi pi-fw pi-align-left" url="altaITV.xhtml"/>
+	               <p:menuitem id="m_lnk113" value="Alta Permiso Circulacion" icon="pi pi-fw pi-align-left" url="altaPCirculacion.xhtml"/>
+	           </p:submenu>
+	           <p:submenu id="m_sm12" label="Listados" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="m_lnk115" value="Listado de Vehiculos" icon="pi pi-fw pi-align-left" url="listarVehiculosEmpresa.xhtml"/>
+	           </p:submenu>
+	           <p:submenu id="m_sm13" label="Consulta" icon="pi pi-fw pi-align-left">
+	               <p:menuitem id="m_lnk116" value="Mi Empresa" icon="pi pi-fw pi-align-left" url="dashboardMiEmpresa.xhtml"/>
+	           </p:submenu>
+        </p:submenu>
+        
+        
+        
+      
+    </sb:menu>
+
+</ui:composition>

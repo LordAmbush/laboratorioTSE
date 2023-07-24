@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Messages</ui:define>
+    
+    <ui:define name="content">
+        <p:tooltip />
+
+        <p:growl id="growl" showDetail="true"/> 
+
+        <div class="grid messages-demo">      
+            <div class="lg:col-4" style="margin-top: 10%; margin-left:33%">
+                <div class="card">
+                    <h5>Modificar Vehiculo</h5>
+                    <h:form>
+                        <p:outputPanel id="grid">
+                            <div class="field grid align-items-start">
+                                <p:outputLabel for="numero" styleClass="col-fixed" value="Numero" />
+                                <div class="col">
+                                    <p:inputText id="numero" value="#{altaEmpresaBean.numero}" readrequiredMessage="Campo obligatorio" readonly="true"/>
+                                    <p:message for="numero" />
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="nombre" styleClass="col-fixed" value="Nombre" />
+                                <div class="col">
+                                    <p:inputText id="nombre" required="true" value="#{altaEmpresaBean.nombre}" requiredMessage="Campo obligatorio"/>
+                                    <p:message for="nombre"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="direccion" styleClass="col-fixed" value="Direccion" />
+                                <div class="col">
+                                    <p:inputText id="direccion" required="true" value="#{altaEmpresaBean.direccion}" requiredMessage="Campo obligatorio"/>
+                                    <p:message for="direccion"/>
+                                </div>
+                            </div>
+                            <div class="field grid">
+                                <p:outputLabel for="rsocial" styleClass="col-fixed" value="Razon Social" />
+                                <div class="col">
+                                    <p:inputText id="rsocial" required="true" value="#{altaEmpresaBean.rsocial}" requiredMessage="Campo obligatorio"/>
+                                    <p:message for="rsocial"/>
+                                </div>
+                            </div>
+                        </p:outputPanel>
+                        <p:commandButton id="submitButton"  style="margin-left:85%;" value="Modificar" action="#{altaEmpresaBean.updateEmpresa()}"  update="grid"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
